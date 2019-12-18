@@ -87,6 +87,7 @@ namespace WizKids
             char[] alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
 
             // Insert
+
             for(int index = 0; index <= word.Length; index++)
             {
                 foreach(char c in alphabet)
@@ -104,6 +105,11 @@ namespace WizKids
 
             // Replace
 
+            // I considered using StringBuilder for the next two, but the documentation (.net framework) seems to suggest that concatenation is faster 
+            // for fixed amount of concatenations:
+            // https://docs.microsoft.com/en-us/dotnet/api/system.text.stringbuilder?redirectedfrom=MSDN&view=netframework-4.8
+            // When you are performing a fixed number of concatenation operations, particularly with string literals. 
+            // In this case, the compiler might combine the concatenation operations into a single operation.
             for (int index = 0; index < word.Length; index++)
             {
                 var prefix = word.Substring(0, index);
